@@ -35,7 +35,7 @@ eventEmitter.on("myEvent", (data) => {
 console.log("Statement A");
 eventEmitter.emit("myEvent", "Statement B");
 console.log("Statement C");
-//----------------------------------------------
+//-------------------Listeners execute in order---------------------------
 
 eventEmitter.on("myEvent2", (data) => {
   console.log(data, "- FIRST");
@@ -50,3 +50,17 @@ eventEmitter.on("myEvent2", (data) => {
 eventEmitter.emit("myEvent2", "Emitted Statement");
 
 console.log("Statement B");
+
+//-------------------------Once--------------------------------
+
+eventEmitter.on("myEvent3", (data) => {
+  console.log(data, "- ON");
+});
+
+eventEmitter.once("myEvent3", (data) => {
+  console.log(data, "- ONCE");
+});
+
+eventEmitter.emit("myEvent3", "Emitted Statement");
+eventEmitter.emit("myEvent3", "Emitted Statement");
+eventEmitter.emit("myEvent3", "Emitted Statement");
