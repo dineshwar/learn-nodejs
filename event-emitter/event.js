@@ -51,7 +51,7 @@ eventEmitter.emit("myEvent2", "Emitted Statement");
 
 console.log("Statement B");
 
-//-------------------------Once--------------------------------
+//-------------------------Once and eventNames--------------------------------
 
 eventEmitter.on("myEvent3", (data) => {
   console.log(data, "- ON");
@@ -60,7 +60,13 @@ eventEmitter.on("myEvent3", (data) => {
 eventEmitter.once("myEvent3", (data) => {
   console.log(data, "- ONCE");
 });
+eventEmitter.once("myEvent4", (data) => {
+  console.log(data, "- ONCE");
+});
+// Get all the active event names.
 
+console.log("Event Names: ", eventEmitter.eventNames());
 eventEmitter.emit("myEvent3", "Emitted Statement");
 eventEmitter.emit("myEvent3", "Emitted Statement");
-eventEmitter.emit("myEvent3", "Emitted Statement");
+eventEmitter.emit("myEvent4", "Emitted Statement");
+console.log("Event Names: ", eventEmitter.eventNames());
