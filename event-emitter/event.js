@@ -35,3 +35,18 @@ eventEmitter.on("myEvent", (data) => {
 console.log("Statement A");
 eventEmitter.emit("myEvent", "Statement B");
 console.log("Statement C");
+//----------------------------------------------
+
+eventEmitter.on("myEvent2", (data) => {
+  console.log(data, "- FIRST");
+});
+
+console.log("Statement A");
+
+eventEmitter.on("myEvent2", (data) => {
+  console.log(data, "- SECOND");
+});
+
+eventEmitter.emit("myEvent2", "Emitted Statement");
+
+console.log("Statement B");
