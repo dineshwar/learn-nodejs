@@ -84,3 +84,6 @@ eventEmitter.on("myEvent6", func1);
 console.log(eventEmitter.eventNames());
 eventEmitter.removeListener("myEvent5", func1);
 console.log(eventEmitter.eventNames());
+// removeAllListeners() this will remove all event listeners
+eventEmitter.removeAllListeners();
+console.log(eventEmitter.eventNames());
