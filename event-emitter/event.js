@@ -53,6 +53,8 @@ console.log("Statement B");
 
 //-------------------------Once and eventNames--------------------------------
 
+// On and addListener are same
+
 eventEmitter.on("myEvent3", (data) => {
   console.log(data, "- ON");
 });
@@ -70,3 +72,15 @@ eventEmitter.emit("myEvent3", "Emitted Statement");
 eventEmitter.emit("myEvent3", "Emitted Statement");
 eventEmitter.emit("myEvent4", "Emitted Statement");
 console.log("Event Names: ", eventEmitter.eventNames());
+
+// removeListener
+function func1() {
+  console.log("EVENT TRIGGERED");
+}
+
+eventEmitter.on("myEvent5", func1);
+eventEmitter.on("myEvent6", func1);
+
+console.log(eventEmitter.eventNames());
+eventEmitter.removeListener("myEvent5", func1);
+console.log(eventEmitter.eventNames());
