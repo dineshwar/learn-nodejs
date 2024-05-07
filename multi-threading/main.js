@@ -1,15 +1,24 @@
-// main.js
-const child_proc = require("child_process");
+const { Worker } = require("worker_threads");
 
-console.log("running main.js");
-const sub = child_proc.fork("./sub.js");
+function doSomethingCPUIntensive(name) {
+  return new Promise((resolve, reject) => {
+    const worker = new Worker("./sub.js", { workerData: { name } });
 
-// sending message to subprocess
-sub.send({ from: "parent" });
+    worker.on("message", resolve);
+    worker.on("error", reject);
+    worker.on("exit", (code) => {
+      if (code !== 0) {
+        reject(new Error(`stopped with exit code ${code}`));
+      }
+    });
+  });
+}
 
-// listening to message from subprocess
-sub.on("message", (message) => {
-  console.log("PARENT got message from " + message.from);
-  sub.disconnect();
-});
-
+(async () => {
+  try {
+    const result = await doSomethingCPUIntensive("John");
+    console.log("Parent: ", result);
+  } catch (err) {
+    console.log(err);
+  }
+})();
