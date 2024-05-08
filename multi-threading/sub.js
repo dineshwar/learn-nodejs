@@ -1,13 +1,10 @@
-// sub.js
-console.log("sub.js is running");
+const { workerData, parentPort } = require("worker_threads");
 
-setTimeout(() => {
-  // subprocess sending message to parent
-  process.send({ from: "client" });
-}, 2000);
+// you can do intensive sychronous stuff here
+function theCPUIntensiveTask(name) {
+  return `Hello World ${name}`;
+}
 
-// subprocess listening to message from parent
-process.on("message", (message) => {
-  console.log("SUBPROCESS got message from " + message.from);
-});
+const intensiveResult = theCPUIntensiveTask(workerData.name);
 
+parentPort.postMessage({ intensiveResult });
