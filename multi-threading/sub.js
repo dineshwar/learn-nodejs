@@ -4,7 +4,7 @@ const { workerData, parentPort } = require("worker_threads");
 function theCPUIntensiveTask(name) {
   return `Hello World ${name}`;
 }
-
+console.log(workerData);
 const intensiveResult = theCPUIntensiveTask(workerData.name);
 
 parentPort.postMessage({ intensiveResult });

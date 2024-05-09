@@ -16,7 +16,7 @@ function doSomethingCPUIntensive(name) {
 
 (async () => {
   try {
-    const result = await doSomethingCPUIntensive("John");
+    const result = await doSomethingCPUIntensive("Dineshwar");
     console.log("Parent: ", result);
   } catch (err) {
     console.log(err);
