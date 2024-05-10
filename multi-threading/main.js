@@ -13,7 +13,6 @@ function doSomethingCPUIntensive(name) {
     });
   });
 }
-
 (async () => {
   try {
     const result = await doSomethingCPUIntensive("Dineshwar");
