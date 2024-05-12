@@ -12,3 +12,4 @@ fs.readFile(__filename, () => {
   setImmediate(() => console.log(6));
   process.nextTick(() => console.log(7));
 });
+console.log(8);
