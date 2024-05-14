@@ -5,7 +5,7 @@ setTimeout(() => {
   queueMicrotask(() => console.log("queueMicrotask 1"));
   process.nextTick(console.log, "nextTick 1");
 }, 0);
-
+// Poll, Check, Close, Timers and Pending
 setTimeout(console.log, 0, "setTimeout 2");
 
 setTimeout(console.log, 0, "setTimeout 3");
