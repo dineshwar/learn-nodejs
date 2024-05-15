@@ -4,4 +4,6 @@ const sleep_lm = () => new Promise((r) => setImmediate(r));
 (async () => {
   setImmediate(() => console.log(1));
   console.log(2);
+  await sleep_st(0);
+  setImmediate(() => console.log(3));
 })();
